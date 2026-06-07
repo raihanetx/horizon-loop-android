@@ -32,6 +32,7 @@ import com.horizonloop.app.data.model.Dialogue
 import com.horizonloop.app.ui.theme.Dark
 import com.horizonloop.app.ui.theme.Mid
 import com.horizonloop.app.ui.theme.White15
+import com.horizonloop.app.ui.util.HLFormat
 
 @Composable
 fun CleanTab(
@@ -80,23 +81,25 @@ fun CleanTab(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Box(
-                modifier = Modifier
-                    .size(64.dp)
-                    .clip(CircleShape)
-                    .background(White15.copy(alpha = 0.15f)),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.GraphicEq,
-                    contentDescription = null,
-                    tint = Dark.copy(alpha = 0.4f),
-                    modifier = Modifier.size(40.dp),
-                )
+            if (audioMode) {
+                Box(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(CircleShape)
+                        .background(White15.copy(alpha = 0.15f)),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.GraphicEq,
+                        contentDescription = null,
+                        tint = Dark.copy(alpha = 0.4f),
+                        modifier = Modifier.size(40.dp),
+                    )
+                }
             }
             if (current != null && !audioMode) {
                 Text(
-                    text = current.english,
+                    text = "[${HLFormat.time(current.startMs)}] ${current.english}",
                     color = Dark,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,

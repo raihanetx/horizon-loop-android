@@ -43,6 +43,13 @@ fun DialogueCard(
         verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(4.dp),
     ) {
         Text(
+            text = startTimeText,
+            color = Mid,
+            fontSize = 10.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 2.dp),
+        )
+        Text(
             text = english,
             color = if (selected) Dark else Dark,
             fontSize = 14.sp,
